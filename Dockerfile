@@ -12,6 +12,7 @@ FROM alpine:3.17.0 as release
 WORKDIR /app
 COPY --from=build  /go/src/evgenii_app/app_itself .
 COPY --from=build  /go/src/evgenii_app/assets ./assets
+COPY wizexercise.txt ./wizexercise.txt
 EXPOSE 8080
 ENTRYPOINT ["/app/app_itself"]
 
