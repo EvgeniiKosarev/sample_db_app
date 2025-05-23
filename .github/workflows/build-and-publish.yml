@@ -14,16 +14,29 @@ jobs:
 
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Log in to Docker Hub
+      - name: login to docker hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
-      - name: Build and push Docker image
+      - name: build and push image
         run: |
           docker build -t evgeniikosarev/application_images:latest .
           docker push evgeniikosarev/application_images:latest
+
+      - name: set up kubectl
+        uses: azure/setup-kubectl@v3
+        with:
+          version: 'latest'
+
+      - name: set up kubernetes config
+        run: |
+          echo "${{ secrets.KUBECONFIG }}" | base64 --decode > $HOME/.kube/config
+
+      - name: update image
+        run: |
+          kubectl set image deployment/evgenii-app-depl evgenii-app-container=evgeniikosarev/application_images:latest
