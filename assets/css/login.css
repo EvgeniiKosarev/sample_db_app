@@ -74,8 +74,8 @@ button{
 	/*buttonm yazısı*/
 	color: #ffffff;
 	/*button background*/
-	background: #e0251b;
-	/*original: #6a8c91*/
+	background: #6a8c91;
+	/*original: #e0251b*/
 	font-size: 1em;
 	font-weight: bold;
 	margin-top: 20px;
@@ -91,7 +91,8 @@ button:hover{
 }
 .login{
 	height: 460px;
-	background: #1B262C;
+	background: #c93075;
+	/* #1B262C*/
 	border-radius: 60% / 10%;
 	transform: translateY(-180px);
 	transition: .8s ease-in-out;
