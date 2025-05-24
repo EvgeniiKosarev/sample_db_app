@@ -48,3 +48,4 @@ jobs:
       - name: update image
         run: |
           kubectl set image deployment/evgenii-app-depl evgenii-app-container=evgeniikosarev/application_images:latest
+          kubectl rollout restart deployment evgenii-app-depl
