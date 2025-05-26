@@ -52,4 +52,4 @@ jobs:
       - name: update image
         run: |
           kubectl set image deployment/evgenii-app-depl evgenii-app-container=evgeniikosarev/application_images:${{ env.IMAGE_TAG }}
-          #kubectl rollout restart deployment evgenii-app-depl
+          
